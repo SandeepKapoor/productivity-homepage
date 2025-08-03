@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity Homepage</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background -->
+    <div class="background">
+        <div class="gradient-overlay"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="time-section">
+                <div class="clock" id="clock">12:00:00</div>
+                <div class="date" id="date">Monday, January 1, 2024</div>
+            </div>
+            
+            <div class="weather-section" id="weather-section">
+                <div class="weather-info">
+                    <i class="weather-icon fas fa-sun"></i>
+                    <div class="weather-details">
+                        <div class="temperature">72°F</div>
+                        <div class="location">San Francisco, CA</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="search-container">
+                <div class="search-engines">
+                    <button class="search-engine active" data-engine="google">
+                        <i class="fab fa-google"></i>
+                    </button>
+                    <button class="search-engine" data-engine="bing">
+                        <i class="fab fa-microsoft"></i>
+                    </button>
+                    <button class="search-engine" data-engine="duckduckgo">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="search-input-container">
+                    <input type="text" id="search-input" placeholder="Search the web..." autocomplete="off">
+                    <button class="search-btn" id="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions Grid -->
+        <section class="quick-actions">
+            <h2 class="section-title">Quick Actions</h2>
+            <div class="action-grid">
+                <a href="https://gmail.com" class="action-card" target="_blank">
+                    <i class="fas fa-envelope"></i>
+                    <span>Gmail</span>
+                </a>
+                <a href="https://calendar.google.com" class="action-card" target="_blank">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Calendar</span>
+                </a>
+                <a href="https://drive.google.com" class="action-card" target="_blank">
+                    <i class="fab fa-google-drive"></i>
+                    <span>Drive</span>
+                </a>
+                <a href="https://github.com" class="action-card" target="_blank">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://notion.so" class="action-card" target="_blank">
+                    <i class="fas fa-sticky-note"></i>
+                    <span>Notion</span>
+                </a>
+                <a href="https://slack.com" class="action-card" target="_blank">
+                    <i class="fab fa-slack"></i>
+                    <span>Slack</span>
+                </a>
+                <a href="https://figma.com" class="action-card" target="_blank">
+                    <i class="fab fa-figma"></i>
+                    <span>Figma</span>
+                </a>
+                <a href="https://spotify.com" class="action-card" target="_blank">
+                    <i class="fab fa-spotify"></i>
+                    <span>Spotify</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Productivity Tools Section -->
+        <section class="productivity-tools">
+            <div class="tools-grid">
+                <!-- To-Do List -->
+                <div class="tool-card todo-card">
+                    <div class="tool-header">
+                        <h3><i class="fas fa-tasks"></i> To-Do List</h3>
+                        <button class="clear-btn" id="clear-todos">Clear All</button>
+                    </div>
+                    <div class="todo-input-container">
+                        <input type="text" id="todo-input" placeholder="Add a new task...">
+                        <button id="add-todo-btn">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <ul class="todo-list" id="todo-list">
+                        <!-- Todo items will be added here dynamically -->
+                    </ul>
+                </div>
+
+                <!-- Quick Notes -->
+                <div class="tool-card notes-card">
+                    <div class="tool-header">
+                        <h3><i class="fas fa-sticky-note"></i> Quick Notes</h3>
+                        <button class="clear-btn" id="clear-notes">Clear</button>
+                    </div>
+                    <textarea id="notes-textarea" placeholder="Write your notes here..."></textarea>
+                </div>
+
+                <!-- Focus Timer -->
+                <div class="tool-card timer-card">
+                    <div class="tool-header">
+                        <h3><i class="fas fa-clock"></i> Focus Timer</h3>
+                    </div>
+                    <div class="timer-display">
+                        <div class="timer-time" id="timer-display">25:00</div>
+                        <div class="timer-label" id="timer-label">Pomodoro</div>
+                    </div>
+                    <div class="timer-controls">
+                        <button class="timer-btn" id="start-timer">
+                            <i class="fas fa-play"></i> Start
+                        </button>
+                        <button class="timer-btn" id="pause-timer" disabled>
+                            <i class="fas fa-pause"></i> Pause
+                        </button>
+                        <button class="timer-btn" id="reset-timer">
+                            <i class="fas fa-redo"></i> Reset
+                        </button>
+                    </div>
+                    <div class="timer-presets">
+                        <button class="preset-btn active" data-time="25">25m</button>
+                        <button class="preset-btn" data-time="45">45m</button>
+                        <button class="preset-btn" data-time="60">60m</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <div class="notification-content">
+            <i class="notification-icon"></i>
+            <span class="notification-text"></span>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
