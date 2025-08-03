@@ -65,6 +65,47 @@
             </div>
         </section>
 
+        <!-- Daily Inspiration Section -->
+        <section class="daily-inspiration">
+            <div class="inspiration-grid">
+                <!-- Quote of the Day -->
+                <div class="inspiration-card quote-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-quote-left"></i> Quote of the Day</h3>
+                        <button class="refresh-btn" id="refresh-quote">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                    <div class="quote-content">
+                        <blockquote id="quote-text">Loading...</blockquote>
+                        <cite id="quote-author">— Unknown</cite>
+                    </div>
+                </div>
+
+                <!-- Code Snippet of the Day -->
+                <div class="inspiration-card code-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-code"></i> Code Snippet</h3>
+                        <button class="refresh-btn" id="refresh-code">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                    <div class="code-content">
+                        <div class="code-header">
+                            <span class="code-language" id="code-language">JavaScript</span>
+                            <button class="copy-btn" id="copy-code">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <pre class="code-snippet" id="code-snippet"><code>Loading...</code></pre>
+                        <div class="code-description" id="code-description">
+                            <p>Loading code snippet...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Quick Actions Grid -->
         <section class="quick-actions">
             <h2 class="section-title">Quick Actions</h2>
@@ -133,6 +174,9 @@
                     <textarea id="notes-textarea" placeholder="Write your notes here..."></textarea>
                 </div>
 
+
+
+
                 <!-- Focus Timer -->
                 <div class="tool-card timer-card">
                     <div class="tool-header">
@@ -163,6 +207,9 @@
         </section>
     </div>
 
+
+
+    
     <!-- Notification -->
     <div class="notification" id="notification">
         <div class="notification-content">

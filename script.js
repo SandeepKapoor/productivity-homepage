@@ -19,12 +19,24 @@ const resetTimerBtn = document.getElementById('reset-timer');
 const presetBtns = document.querySelectorAll('.preset-btn');
 const notification = document.getElementById('notification');
 
+// Daily Inspiration Elements
+const quoteText = document.getElementById('quote-text');
+const quoteAuthor = document.getElementById('quote-author');
+const refreshQuoteBtn = document.getElementById('refresh-quote');
+const codeLanguage = document.getElementById('code-language');
+const codeSnippet = document.getElementById('code-snippet');
+const codeDescription = document.getElementById('code-description');
+const refreshCodeBtn = document.getElementById('refresh-code');
+const copyCodeBtn = document.getElementById('copy-code');
+
 // Global Variables
 let currentSearchEngine = 'google';
 let timerInterval;
 let timerRunning = false;
 let currentTime = 25 * 60; // 25 minutes in seconds
 let originalTime = 25 * 60;
+let currentQuoteIndex = 0;
+let currentCodeIndex = 0;
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
@@ -32,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateDate();
     loadTodos();
     loadNotes();
+    loadDailyInspiration();
     setupEventListeners();
     setInterval(updateClock, 1000);
     setInterval(updateDate, 60000); // Update date every minute
@@ -341,6 +354,11 @@ function setupEventListeners() {
     pauseTimerBtn.addEventListener('click', pauseTimer);
     resetTimerBtn.addEventListener('click', resetTimer);
     
+    // Daily Inspiration
+    refreshQuoteBtn.addEventListener('click', refreshQuote);
+    refreshCodeBtn.addEventListener('click', refreshCode);
+    copyCodeBtn.addEventListener('click', copyCodeToClipboard);
+    
     // Request notification permission
     if ('Notification' in window && Notification.permission === 'default') {
         Notification.requestPermission();
@@ -372,6 +390,277 @@ document.addEventListener('keydown', function(e) {
 updateWeather();
 setInterval(updateWeather, 30 * 60 * 1000);
 
+// Daily Inspiration Functions
+const quotes = [
+    {
+        text: "The only way to do great work is to love what you do.",
+        author: "Steve Jobs"
+    },
+    {
+        text: "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+        author: "Winston Churchill"
+    },
+    {
+        text: "The future belongs to those who believe in the beauty of their dreams.",
+        author: "Eleanor Roosevelt"
+    },
+    {
+        text: "Don't watch the clock; do what it does. Keep going.",
+        author: "Sam Levenson"
+    },
+    {
+        text: "The only limit to our realization of tomorrow is our doubts of today.",
+        author: "Franklin D. Roosevelt"
+    },
+    {
+        text: "It always seems impossible until it's done.",
+        author: "Nelson Mandela"
+    },
+    {
+        text: "The way to get started is to quit talking and begin doing.",
+        author: "Walt Disney"
+    },
+    {
+        text: "Believe you can and you're halfway there.",
+        author: "Theodore Roosevelt"
+    },
+    {
+        text: "Your time is limited, don't waste it living someone else's life.",
+        author: "Steve Jobs"
+    },
+    {
+        text: "The best way to predict the future is to create it.",
+        author: "Peter Drucker"
+    },
+    {
+        text: "Innovation distinguishes between a leader and a follower.",
+        author: "Steve Jobs"
+    },
+    {
+        text: "Stay hungry, stay foolish.",
+        author: "Steve Jobs"
+    },
+    {
+        text: "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+        author: "Nelson Mandela"
+    },
+    {
+        text: "Life is what happens when you're busy making other plans.",
+        author: "John Lennon"
+    },
+    {
+        text: "The only person you are destined to become is the person you decide to be.",
+        author: "Ralph Waldo Emerson"
+    }
+];
+
+const codeSnippets = [
+    {
+        language: "JavaScript",
+        code: `// Modern JavaScript: Array Methods
+const numbers = [1, 2, 3, 4, 5];
+
+// Map: Transform each element
+const doubled = numbers.map(n => n * 2);
+console.log(doubled); // [2, 4, 6, 8, 10]
+
+// Filter: Keep only elements that pass a test
+const evens = numbers.filter(n => n % 2 === 0);
+console.log(evens); // [2, 4]
+
+// Reduce: Combine all elements into a single value
+const sum = numbers.reduce((acc, n) => acc + n, 0);
+console.log(sum); // 15
+
+// Find: Get the first element that passes a test
+const firstEven = numbers.find(n => n % 2 === 0);
+console.log(firstEven); // 2`,
+        description: "Modern JavaScript array methods make data manipulation clean and functional. These methods are chainable and create more readable code."
+    },
+    {
+        language: "Python",
+        code: `# Python: List Comprehensions
+numbers = [1, 2, 3, 4, 5]
+
+# Basic list comprehension
+squares = [x**2 for x in numbers]
+print(squares)  # [1, 4, 9, 16, 25]
+
+# With condition
+even_squares = [x**2 for x in numbers if x % 2 == 0]
+print(even_squares)  # [4, 16]
+
+# Dictionary comprehension
+square_dict = {x: x**2 for x in numbers}
+print(square_dict)  # {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+
+# Set comprehension
+unique_squares = {x**2 for x in numbers}
+print(unique_squares)  # {1, 4, 9, 16, 25}`,
+        description: "List comprehensions in Python provide a concise way to create lists, dictionaries, and sets. They're more readable than traditional loops."
+    },
+    {
+        language: "CSS",
+        code: `/* Modern CSS: Grid Layout */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Responsive design with CSS Grid */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}`,
+        description: "CSS Grid provides powerful layout capabilities. The auto-fit and minmax functions create responsive layouts that adapt to different screen sizes."
+    },
+    {
+        language: "React",
+        code: `// React: Custom Hook Example
+import { useState, useEffect } from 'react';
+
+const useLocalStorage = (key, initialValue) => {
+  const [value, setValue] = useState(() => {
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error('Error reading from localStorage:', error);
+      return initialValue;
+    }
+  });
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      console.error('Error writing to localStorage:', error);
+    }
+  }, [key, value]);
+
+  return [value, setValue];
+};
+
+// Usage
+const MyComponent = () => {
+  const [name, setName] = useLocalStorage('userName', '');
+  
+  return (
+    <input
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+      placeholder="Enter your name"
+    />
+  );
+};`,
+        description: "Custom hooks in React allow you to extract component logic into reusable functions. This hook automatically syncs state with localStorage."
+    },
+    {
+        language: "Node.js",
+        code: `// Node.js: Async/Await with Error Handling
+const express = require('express');
+const app = express();
+
+// Middleware for async error handling
+const asyncHandler = (fn) => (req, res, next) => {
+  Promise.resolve(fn(req, res, next)).catch(next);
+};
+
+// Example route with proper error handling
+app.get('/api/users/:id', asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  
+  const user = await User.findById(id);
+  if (!user) {
+    return res.status(404).json({ 
+      error: 'User not found' 
+    });
+  }
+  
+  res.json(user);
+}));
+
+// Global error handler
+app.use((error, req, res, next) => {
+  console.error(error.stack);
+  res.status(500).json({ 
+    error: 'Something went wrong!' 
+  });
+});`,
+        description: "Proper error handling in Node.js applications is crucial. This pattern ensures all async errors are caught and handled gracefully."
+    }
+];
+
+function loadDailyInspiration() {
+    // Get today's date as a seed for consistent daily content
+    const today = new Date();
+    const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+    
+    // Use seed to select quote and code for today
+    currentQuoteIndex = seed % quotes.length;
+    currentCodeIndex = seed % codeSnippets.length;
+    
+    updateQuote();
+    updateCode();
+}
+
+function updateQuote() {
+    const quote = quotes[currentQuoteIndex];
+    quoteText.textContent = quote.text;
+    quoteAuthor.textContent = `— ${quote.author}`;
+}
+
+function updateCode() {
+    const codeData = codeSnippets[currentCodeIndex];
+    codeLanguage.textContent = codeData.language;
+    codeSnippet.querySelector('code').textContent = codeData.code;
+    codeDescription.querySelector('p').textContent = codeData.description;
+}
+
+function refreshQuote() {
+    currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+    updateQuote();
+    showNotification('New quote loaded!', 'info');
+}
+
+function refreshCode() {
+    currentCodeIndex = (currentCodeIndex + 1) % codeSnippets.length;
+    updateCode();
+    showNotification('New code snippet loaded!', 'info');
+}
+
+function copyCodeToClipboard() {
+    const codeData = codeSnippets[currentCodeIndex];
+    navigator.clipboard.writeText(codeData.code).then(() => {
+        copyCodeBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        copyCodeBtn.classList.add('copied');
+        showNotification('Code copied to clipboard!', 'success');
+        
+        setTimeout(() => {
+            copyCodeBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+            copyCodeBtn.classList.remove('copied');
+        }, 2000);
+    }).catch(() => {
+        showNotification('Failed to copy code', 'error');
+    });
+}
+
 // Export functions for potential external use
 window.ProductivityHomepage = {
     addTodo,
@@ -379,5 +668,8 @@ window.ProductivityHomepage = {
     startTimer,
     pauseTimer,
     resetTimer,
-    showNotification
+    showNotification,
+    refreshQuote,
+    refreshCode,
+    copyCodeToClipboard
 };
