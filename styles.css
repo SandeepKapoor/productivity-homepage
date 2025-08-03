@@ -7,9 +7,9 @@
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #000000;
     min-height: 100vh;
-    color: #333;
+    color: #ffffff;
     line-height: 1.6;
 }
 
@@ -26,7 +26,7 @@ body {
 .gradient-overlay {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #000000;
 }
 
 /* Main Container */
@@ -42,15 +42,15 @@ body {
 
 /* Header Section */
 .header {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(20, 20, 20, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .time-section {
@@ -62,13 +62,13 @@ body {
 .clock {
     font-size: 3rem;
     font-weight: 700;
-    color: #333;
+    color: #ffffff;
     line-height: 1;
 }
 
 .date {
     font-size: 1.1rem;
-    color: #666;
+    color: #a0a0a0;
     font-weight: 400;
 }
 
@@ -86,7 +86,7 @@ body {
 
 .weather-icon {
     font-size: 2.5rem;
-    color: #f39c12;
+    color: #00ff88;
 }
 
 .weather-details {
@@ -98,22 +98,22 @@ body {
 .temperature {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #333;
+    color: #ffffff;
 }
 
 .location {
     font-size: 0.9rem;
-    color: #666;
+    color: #a0a0a0;
 }
 
 /* Search Section */
 .search-section {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(20, 20, 20, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 2rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .search-container {
@@ -129,25 +129,25 @@ body {
 }
 
 .search-engine {
-    background: #f8f9fa;
+    background: rgba(40, 40, 40, 0.8);
     border: 2px solid transparent;
     border-radius: 12px;
     padding: 0.75rem 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 1.1rem;
-    color: #666;
+    color: #a0a0a0;
 }
 
 .search-engine:hover {
-    background: #e9ecef;
+    background: rgba(60, 60, 60, 0.8);
     transform: translateY(-2px);
 }
 
 .search-engine.active {
-    background: #667eea;
-    color: white;
-    border-color: #667eea;
+    background: #00ff88;
+    color: #000000;
+    border-color: #00ff88;
 }
 
 .search-input-container {
@@ -159,32 +159,38 @@ body {
 #search-input {
     flex: 1;
     padding: 1rem 1.5rem;
-    border: 2px solid #e9ecef;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px;
     font-size: 1.1rem;
     outline: none;
     transition: all 0.3s ease;
-    background: white;
+    background: rgba(40, 40, 40, 0.8);
+    color: #ffffff;
 }
 
 #search-input:focus {
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: #00ff88;
+    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+}
+
+#search-input::placeholder {
+    color: #a0a0a0;
 }
 
 .search-btn {
-    background: #667eea;
-    color: white;
+    background: #ffffff;
+    color: #000000;
     border: none;
     border-radius: 15px;
     padding: 1rem 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 1.1rem;
+    font-weight: 600;
 }
 
 .search-btn:hover {
-    background: #5a6fd8;
+    background: #f0f0f0;
     transform: translateY(-2px);
 }
 
@@ -200,12 +206,12 @@ body {
 }
 
 .inspiration-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(20, 20, 20, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 2rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -222,19 +228,19 @@ body {
 .card-header h3 {
     font-size: 1.3rem;
     font-weight: 600;
-    color: #333;
+    color: #ffffff;
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
 .card-header h3 i {
-    color: #667eea;
+    color: #00ff88;
 }
 
 .refresh-btn {
-    background: #667eea;
-    color: white;
+    background: #ffffff;
+    color: #000000;
     border: none;
     border-radius: 10px;
     padding: 0.5rem;
@@ -245,10 +251,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: 600;
 }
 
 .refresh-btn:hover {
-    background: #5a6fd8;
+    background: #f0f0f0;
     transform: rotate(180deg);
 }
 
@@ -263,7 +270,7 @@ body {
 #quote-text {
     font-size: 1.2rem;
     font-style: italic;
-    color: #333;
+    color: #ffffff;
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -272,7 +279,7 @@ body {
 
 #quote-author {
     font-size: 1rem;
-    color: #666;
+    color: #a0a0a0;
     font-style: normal;
     text-align: right;
     font-weight: 500;
@@ -282,18 +289,18 @@ body {
 
 /* Quick Actions Section */
 .quick-actions {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(20, 20, 20, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 2rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .section-title {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 1.5rem;
     text-align: center;
 }
@@ -307,12 +314,12 @@ body {
 }
 
 .action-card {
-    background: #f8f9fa;
+    background: rgba(40, 40, 40, 0.8);
     border: 2px solid transparent;
     border-radius: 15px;
     padding: 1.5rem 1rem;
     text-decoration: none;
-    color: #333;
+    color: #ffffff;
     text-align: center;
     transition: all 0.3s ease;
     display: flex;
@@ -322,14 +329,15 @@ body {
 }
 
 .action-card:hover {
-    background: #e9ecef;
+    background: rgba(60, 60, 60, 0.8);
     transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    border-color: #00ff88;
 }
 
 .action-card i {
     font-size: 2rem;
-    color: #667eea;
+    color: #00ff88;
 }
 
 .action-card span {
@@ -350,12 +358,12 @@ body {
 }
 
 .tool-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(20, 20, 20, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 2rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -370,18 +378,18 @@ body {
 .tool-header h3 {
     font-size: 1.3rem;
     font-weight: 600;
-    color: #333;
+    color: #ffffff;
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
 .tool-header h3 i {
-    color: #667eea;
+    color: #00ff88;
 }
 
 .clear-btn {
-    background: #dc3545;
+    background: #ff4757;
     color: white;
     border: none;
     border-radius: 10px;
@@ -389,10 +397,11 @@ body {
     cursor: pointer;
     font-size: 0.9rem;
     transition: all 0.3s ease;
+    font-weight: 600;
 }
 
 .clear-btn:hover {
-    background: #c82333;
+    background: #ff3742;
     transform: translateY(-2px);
 }
 
@@ -405,30 +414,37 @@ body {
 #todo-input {
     flex: 1;
     padding: 0.75rem 1rem;
-    border: 2px solid #e9ecef;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     font-size: 1rem;
     outline: none;
     transition: all 0.3s ease;
+    background: rgba(40, 40, 40, 0.8);
+    color: #ffffff;
 }
 
 #todo-input:focus {
-    border-color: #667eea;
+    border-color: #00ff88;
+}
+
+#todo-input::placeholder {
+    color: #a0a0a0;
 }
 
 #add-todo-btn {
-    background: #667eea;
-    color: white;
+    background: #00ff88;
+    color: #000000;
     border: none;
     border-radius: 10px;
     padding: 0.75rem 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 1rem;
+    font-weight: 600;
 }
 
 #add-todo-btn:hover {
-    background: #5a6fd8;
+    background: #00e676;
     transform: translateY(-2px);
 }
 
@@ -446,13 +462,13 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem 1rem;
-    background: #f8f9fa;
+    background: rgba(40, 40, 40, 0.8);
     border-radius: 10px;
     transition: all 0.3s ease;
 }
 
 .todo-item:hover {
-    background: #e9ecef;
+    background: rgba(60, 60, 60, 0.8);
 }
 
 .todo-content {
@@ -465,23 +481,23 @@ body {
 .todo-checkbox {
     width: 18px;
     height: 18px;
-    accent-color: #667eea;
+    accent-color: #00ff88;
     cursor: pointer;
 }
 
 .todo-text {
     font-size: 1rem;
-    color: #333;
+    color: #ffffff;
     flex: 1;
 }
 
 .todo-item.completed .todo-text {
     text-decoration: line-through;
-    color: #666;
+    color: #a0a0a0;
 }
 
 .delete-todo {
-    background: #dc3545;
+    background: #ff4757;
     color: white;
     border: none;
     border-radius: 8px;
@@ -492,7 +508,7 @@ body {
 }
 
 .delete-todo:hover {
-    background: #c82333;
+    background: #ff3742;
     transform: scale(1.1);
 }
 
@@ -501,17 +517,23 @@ body {
     flex: 1;
     min-height: 200px;
     padding: 1rem;
-    border: 2px solid #e9ecef;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     font-size: 1rem;
     font-family: inherit;
     resize: vertical;
     outline: none;
     transition: all 0.3s ease;
+    background: rgba(40, 40, 40, 0.8);
+    color: #ffffff;
 }
 
 #notes-textarea:focus {
-    border-color: #667eea;
+    border-color: #00ff88;
+}
+
+#notes-textarea::placeholder {
+    color: #a0a0a0;
 }
 
 /* Timer Styles */
@@ -529,13 +551,13 @@ body {
 .timer-time {
     font-size: 3rem;
     font-weight: 700;
-    color: #333;
+    color: #ffffff;
     line-height: 1;
 }
 
 .timer-label {
     font-size: 1.1rem;
-    color: #666;
+    color: #a0a0a0;
     margin-top: 0.5rem;
 }
 
@@ -547,8 +569,8 @@ body {
 }
 
 .timer-btn {
-    background: #667eea;
-    color: white;
+    background: #00ff88;
+    color: #000000;
     border: none;
     border-radius: 10px;
     padding: 0.75rem 1.5rem;
@@ -558,10 +580,11 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    font-weight: 600;
 }
 
 .timer-btn:hover:not(:disabled) {
-    background: #5a6fd8;
+    background: #00e676;
     transform: translateY(-2px);
 }
 
@@ -578,24 +601,24 @@ body {
 }
 
 .preset-btn {
-    background: #f8f9fa;
+    background: rgba(40, 40, 40, 0.8);
     border: 2px solid transparent;
     border-radius: 8px;
     padding: 0.5rem 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 0.9rem;
-    color: #666;
+    color: #a0a0a0;
 }
 
 .preset-btn:hover {
-    background: #e9ecef;
+    background: rgba(60, 60, 60, 0.8);
 }
 
 .preset-btn.active {
-    background: #667eea;
-    color: white;
-    border-color: #667eea;
+    background: #00ff88;
+    color: #000000;
+    border-color: #00ff88;
 }
 
 /* Notification Styles */
@@ -603,14 +626,14 @@ body {
     position: fixed;
     top: 2rem;
     right: 2rem;
-    background: white;
+    background: rgba(20, 20, 20, 0.95);
     border-radius: 15px;
     padding: 1rem 1.5rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     transform: translateX(100%);
     transition: all 0.3s ease;
     z-index: 1000;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
 }
 
@@ -646,7 +669,7 @@ body {
 
 .notification-text {
     font-weight: 500;
-    color: #333;
+    color: #ffffff;
 }
 
 /* Scrollbar Styles */
